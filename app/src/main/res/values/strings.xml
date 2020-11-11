@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Currency Converter</string>
+    <string name="first_sum_digit">120.5</string>
+    <string name="second_sum_digit">2.2</string>
 </resources>

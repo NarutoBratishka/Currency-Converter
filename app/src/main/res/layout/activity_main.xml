@@ -6,13 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <EditText
+        android:id="@+id/first_money_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/first_sum_digit"
+        android:background="none"
+        android:hint="@string/first_sum_digit"
+        android:inputType="numberDecimal"
+        android:textSize="32sp"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <EditText
+        android:id="@+id/second_money_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/second_sum_digit"
+        android:background="none"
+        android:hint="@string/second_sum_digit"
+        android:inputType="numberDecimal"
+        android:textSize="32sp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_money_text"/>
+
+    <TextView
+        android:id="@+id/first_curr_short_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="RU"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/first_money_text"
+        app:layout_constraintStart_toStartOf="@+id/first_money_text"
+        app:layout_constraintTop_toBottomOf="@+id/first_money_text" />
+
+    <TextView
+        android:id="@+id/second_curr_short_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USD"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/second_money_text"
+        app:layout_constraintStart_toStartOf="@+id/second_money_text"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_short_name"/>
+
+    <Button
+        android:id="@+id/first_curr_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:textColor="@color/blue_reference"
+        android:text="Изменить\nвалюту"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="none"
+        app:layout_constraintEnd_toEndOf="@+id/first_money_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/first_money_text"
+        app:layout_constraintTop_toBottomOf="@+id/first_curr_short_name" />
+
+    <Button
+        android:id="@+id/second_curr_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_reference"
+        android:text="Изменить\nвалюту"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="none"
+        app:layout_constraintEnd_toEndOf="@+id/second_money_text"
+        app:layout_constraintStart_toStartOf="@+id/second_money_text"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_button"/>
+
 
 </android.support.constraint.ConstraintLayout>
