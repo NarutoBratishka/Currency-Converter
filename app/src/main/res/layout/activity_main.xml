@@ -68,7 +68,8 @@
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_money_text" />
+        app:layout_constraintTop_toBottomOf="@+id/first_money_text"
+        android:onClick="changeCurrencyActivity"/>
 
     <TextView
         android:id="@+id/second_curr_short_name"
@@ -79,7 +80,8 @@
         android:textSize="32sp"
         app:layout_constraintBaseline_toBaselineOf="@id/first_curr_short_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        android:onClick="changeCurrencyActivity"/>
 
     <Button
         android:id="@+id/first_curr_button"
@@ -93,7 +95,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_curr_short_name" />
+        app:layout_constraintTop_toBottomOf="@+id/first_curr_short_name"
+        android:onClick="changeCurrencyActivity"/>
 
     <Button
         android:id="@+id/second_curr_button"
@@ -106,7 +109,8 @@
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@id/first_curr_button"
         app:layout_constraintEnd_toEndOf="@+id/second_money_text"
-        app:layout_constraintStart_toStartOf="@+id/second_money_text" />
+        app:layout_constraintStart_toStartOf="@+id/second_money_text"
+        android:onClick="changeCurrencyActivity"/>
 
 
 </android.support.constraint.ConstraintLayout>

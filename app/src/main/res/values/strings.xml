@@ -2,6 +2,6 @@
     <string name="app_name">My Currency Converter</string>
     <string name="first_sum_digit">0.0</string>
     <string name="second_sum_digit">0.0</string>
-    <string name="main_title">Конвертер валют</string>
+    <string name="main_title">Конвертер \nвалют</string>
     <string name="change_currency_title">Выбор валют</string>
 </resources>
