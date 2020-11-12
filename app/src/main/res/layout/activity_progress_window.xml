@@ -15,11 +15,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <!--android:tooltipText="@string/xml_web_file"-->
 
     <TextView
         android:id="@+id/tempElementID"
         android:text=""
-        android:textSize="56dp"
+        android:textSize="56sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"

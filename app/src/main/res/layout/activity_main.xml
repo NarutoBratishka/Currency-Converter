@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.1"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/second_money_text"
@@ -56,7 +57,8 @@
         app:layout_constraintBottom_toTopOf="@+id/first_curr_short_name"
         app:layout_constraintEnd_toStartOf="@+id/second_curr_button"
         app:layout_constraintStart_toEndOf="@+id/first_curr_button"
-        app:layout_constraintTop_toBottomOf="@+id/first_money_text" />
+        app:layout_constraintTop_toBottomOf="@+id/first_money_text"
+        android:contentDescription="@string/arrows" />
 
     <TextView
         android:id="@+id/first_curr_short_name"
@@ -89,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:background="@null"
-        android:text="Изменить\nвалюту"
+        android:text="@string/change_currency_button"
         android:textAllCaps="false"
         android:textColor="@color/blue_reference"
         android:textSize="16sp"
@@ -103,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:text="Изменить\nвалюту"
+        android:text="@string/change_currency_button"
         android:textAllCaps="false"
         android:textColor="@color/blue_reference"
         android:textSize="16sp"

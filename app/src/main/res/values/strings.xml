@@ -4,4 +4,7 @@
     <string name="second_sum_digit">0.0</string>
     <string name="main_title">Конвертер \nвалют</string>
     <string name="change_currency_title">Выбор валют</string>
+    <string name="arrows">arrows</string>
+    <string name="change_currency_button">Изменить\nвалюту</string>
+    <string name="xml_web_file">Изменить\nвалюту<string id="web_file"/></string>
 </resources>
