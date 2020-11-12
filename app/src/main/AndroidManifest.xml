@@ -16,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCurrencyConverter">
-        <activity android:name=".CurrencySelectionDialog"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +26,9 @@
         <activity
             android:name=".ProgressWindow"
             android:label="@string/main_title"></activity>
+        <activity
+            android:name=".CurrencySelectionDialog"
+            android:label="@string/change_currency_title"></activity>
     </application>
 
 </manifest>
