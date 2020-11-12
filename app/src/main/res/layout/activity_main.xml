@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:onClick="hideKeyboard">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/white"
         app:layout_constraintGuide_percent="0.5" />
 
     <EditText
         android:id="@+id/first_money_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/first_sum_digit"
-        android:background="none"
+        android:background="@null"
         android:hint="@string/first_sum_digit"
         android:inputType="numberDecimal"
-        android:textSize="32sp"
         android:textColorHint="@color/black"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/second_money_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
         android:autofillHints="@string/second_sum_digit"
-        android:background="none"
+        android:background="@null"
         android:hint="@string/second_sum_digit"
         android:inputType="numberDecimal"
         android:textSize="32sp"
@@ -43,16 +48,26 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintBaseline_toBaselineOf="@id/first_money_text"/>
 
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/arrow"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/first_curr_short_name"
+        app:layout_constraintEnd_toStartOf="@+id/second_curr_button"
+        app:layout_constraintStart_toEndOf="@+id/first_curr_button"
+        app:layout_constraintTop_toBottomOf="@+id/first_money_text" />
+
     <TextView
         android:id="@+id/first_curr_short_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="48dp"
         android:text="RU"
-        android:textSize="32sp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/first_money_text"
-        app:layout_constraintStart_toStartOf="@+id/first_money_text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_money_text" />
 
     <TextView
@@ -60,39 +75,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USD"
-        android:textSize="32sp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/second_money_text"
-        app:layout_constraintStart_toStartOf="@+id/second_money_text"
-        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_short_name"/>
+        android:textSize="32sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_short_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <Button
         android:id="@+id/first_curr_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:textColor="@color/blue_reference"
+        android:layout_marginTop="48dp"
+        android:background="@null"
         android:text="Изменить\nвалюту"
-        android:textSize="16sp"
         android:textAllCaps="false"
-        android:background="none"
-        app:layout_constraintEnd_toEndOf="@+id/first_money_text"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/first_money_text"
+        android:textColor="@color/blue_reference"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_curr_short_name" />
 
     <Button
         android:id="@+id/second_curr_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue_reference"
+        android:background="@null"
         android:text="Изменить\nвалюту"
-        android:textSize="16sp"
         android:textAllCaps="false"
-        android:background="none"
+        android:textColor="@color/blue_reference"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_button"
         app:layout_constraintEnd_toEndOf="@+id/second_money_text"
-        app:layout_constraintStart_toStartOf="@+id/second_money_text"
-        app:layout_constraintBaseline_toBaselineOf="@id/first_curr_button"/>
+        app:layout_constraintStart_toStartOf="@+id/second_money_text" />
 
 
 </android.support.constraint.ConstraintLayout>
