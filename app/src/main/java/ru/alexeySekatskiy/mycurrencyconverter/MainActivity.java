@@ -24,4 +24,8 @@ public class MainActivity extends AppCompatActivity {
         secondMoneyText.setText("" + 2.2);
     }
 
+    public void hideKeyboard(View view) {
+        InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 }
