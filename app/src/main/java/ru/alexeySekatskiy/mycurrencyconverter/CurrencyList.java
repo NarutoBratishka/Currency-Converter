@@ -1,29 +1,44 @@
 package ru.alexeySekatskiy.mycurrencyconverter;
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class CurrencyList {
-    int size = 0;
-    CurrencyBucket[] valute;
+public class CurrencyList implements Iterable<CurrencyBucket> {
+    static int size = 0;
+    int iteratorIteration = 0;
+    static CurrencyBucket[] valute = new CurrencyBucket[16];
 
-    public CurrencyList(int size) {
-        valute = new CurrencyBucket[size];
-    }
 
-    private CurrencyList() {
-        valute = new CurrencyBucket[16];
-    }
 
-    private void add(CurrencyBucket bucket) {
-        if (size >= this.valute.length - 1) {
+    static void add(CurrencyBucket bucket) {
+        if (size >= valute.length - 1) {
             CurrencyBucket[] temp = new CurrencyBucket[size * 2 + 1];
-            Arrays.copyOf(this.valute, size);
+            temp = Arrays.copyOf(valute, size);
             valute = temp;
         }
         valute[size++] = bucket;
     }
 
-    private CurrencyBucket get(int index) {
+    static CurrencyBucket get(int index) {
         return valute[index];
+    }
+
+    @NonNull
+    @Override
+    public Iterator<CurrencyBucket> iterator() {
+        return new Iterator<CurrencyBucket>() {
+
+            @Override
+            public boolean hasNext() {
+                return iteratorIteration <= size;
+            }
+
+            @Override
+            public CurrencyBucket next() {
+                return CurrencyList.get(iteratorIteration++);
+            }
+        };
     }
 }

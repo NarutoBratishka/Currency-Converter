@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MySecondTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textColor">#FF757575</item>
+        <item name="android:textSize">24sp</item>
+
+    </style>
+</resources>

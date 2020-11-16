@@ -8,13 +8,13 @@ public class XmlCurrencyParser {
     private List<String> valutes;
 
     private final String opCharCode = "<CharCode>";
-    private final String clCharCode = "</CharCode>";
+    private final String clCharCode = "</CharCode";
     private final String opNominal = "<Nominal>";
-    private final String clNominal = "</Nominal>";
+    private final String clNominal = "</Nominal";
     private final String opName = "<Name>";
-    private final String clName = "</Name>";
+    private final String clName = "</Name";
     private final String opValue = "<Value>";
-    private final String clValue = "</Value>";
+    private final String clValue = "</Value";
 
 
 
@@ -25,18 +25,19 @@ public class XmlCurrencyParser {
                 "<NumCode>\\d{3}</NumCode>\n"));
     }
 
-    void parseText() {
+    public void parseText() {
         for (String lines: valutes) {
-            String[] param = lines.split("\n");
-//            TODO:
+            String[] param = lines.split(">\t*");
+
+            CurrencyList.add(new CurrencyBucket(charCode(param), value(param), name(param)));
         }
     }
 
 
     private String charCode(String[] param) {
         String tagValue =
-            param[0].substring(
-                opCharCode.length(), param[0].indexOf(clCharCode));
+                param[0].substring(
+                        opCharCode.length(), param[0].indexOf(clCharCode));
         return tagValue;
     }
 
@@ -44,13 +45,13 @@ public class XmlCurrencyParser {
     private double value(String[] param) {
         int nominal =
                 Integer.parseInt(
-                    param[1].substring(
-                            opNominal.length(), param[1].indexOf(clNominal)));
+                        param[1].substring(
+                                opNominal.length(), param[1].indexOf(clNominal)));
 
         double curValue =
                 Double.parseDouble(
                         param[3].substring(
-                            opValue.length(), param[3].indexOf(clValue)));
+                                opValue.length(), param[3].indexOf(clValue)));
         return curValue/nominal;
     }
 

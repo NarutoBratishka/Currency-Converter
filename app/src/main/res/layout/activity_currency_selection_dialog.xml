@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/NestedScrollView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CurrencySelectionDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CurrencySelectionDialog"
-    >
+    android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constr_layout_select"
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <TextView
+            android:id="@+id/rub_name"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="32dp"
+            android:background="@color/gray"
+            android:text="Рубль"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="rubActivity"/>
+
+        <TextView
+            android:id="@+id/rub_char"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="8dp"
+            android:background="@color/gray"
+            android:textAlignment="gravity"
+            android:text="RUB"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintBaseline_toBaselineOf="@id/rub_name"
+            android:onClick="rubActivity"/>
+
+        <ImageView
+            android:id="@+id/dark_header"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:drawable/dark_header"
+            app:layout_constraintTop_toBottomOf="@+id/rub_name"/>
 
 
+    </android.support.constraint.ConstraintLayout>
 
 
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

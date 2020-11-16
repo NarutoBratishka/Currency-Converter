@@ -1,17 +1,21 @@
 package ru.alexeySekatskiy.mycurrencyconverter;
 
-import java.io.BufferedOutputStream;
+import android.util.Log;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class XmlLoadThread implements Runnable {
     private static volatile StringBuffer stringB = new StringBuffer("");
+    private static final String TAG = "XmlLoadThread";
 
     @Override
     public void run() {
@@ -19,16 +23,21 @@ public class XmlLoadThread implements Runnable {
 
         try {
             URL url = new URL("http://www.cbr.ru/scripts/XML_daily.asp");
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            InputStream is = (url.openStream());
+            InputStreamReader isr = new InputStreamReader(is, "windows-1251");
+            BufferedReader reader = new BufferedReader(isr);
 
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                stringB.append(inputLine);
+            String input;
+            while ((input = reader.readLine()) != null) {
+                stringB.append(input);
+                Log.d(TAG, input);
             }
-            in.close();
+
+            reader.close();
             Thread.currentThread().interrupt();
         } catch (IOException e) {
             e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 

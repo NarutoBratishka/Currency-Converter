@@ -2,6 +2,7 @@ package ru.alexeySekatskiy.mycurrencyconverter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class CurrencySelectionDialog extends AppCompatActivity {
 
@@ -11,5 +12,7 @@ public class CurrencySelectionDialog extends AppCompatActivity {
         setContentView(R.layout.activity_currency_selection_dialog);
     }
 
+    public void rubActivity(View view) {
 
+    }
 }

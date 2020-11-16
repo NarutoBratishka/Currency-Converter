@@ -2,14 +2,14 @@ package ru.alexeySekatskiy.mycurrencyconverter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    private static boolean rightActivity = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,20 @@ public class MainActivity extends AppCompatActivity {
         manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public void changeCurrencyActivity(View view) {
+    public void changeCurrencyActivityLeft(View view) {
+        MainActivity.rightActivity = false;
         Intent intent = new Intent(MainActivity.this, ProgressWindow.class);
         startActivity(intent);
+    }
+
+    public void changeCurrencyActivityRight(View view) {
+        MainActivity.rightActivity = true;
+        Intent intent = new Intent(MainActivity.this, ProgressWindow.class);
+        startActivity(intent);
+    }
+
+    public boolean isRightActivity() {
+        return rightActivity;
     }
 
 //    public void TEMP_ACTION(View view) {
