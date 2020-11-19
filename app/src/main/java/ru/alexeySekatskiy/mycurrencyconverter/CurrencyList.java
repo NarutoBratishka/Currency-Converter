@@ -14,11 +14,22 @@ public class CurrencyList implements Iterable<CurrencyBucket> {
 
     static void add(CurrencyBucket bucket) {
         if (size >= valute.length - 1) {
-            CurrencyBucket[] temp = new CurrencyBucket[size * 2 + 1];
-            temp = Arrays.copyOf(valute, size);
-            valute = temp;
+            CurrencyBucket[] newContainer;
+
+            newContainer = copyFromPreviousBucketArray(valute);
+            valute = newContainer;
         }
         valute[size++] = bucket;
+    }
+
+    private static CurrencyBucket[] copyFromPreviousBucketArray(CurrencyBucket[] valute) {
+        CurrencyBucket[] newContainer = new CurrencyBucket[size * 2 + 1];
+        int inc = 0;
+        for (CurrencyBucket bucket: valute) {
+            newContainer[inc++] = bucket;
+        }
+
+        return newContainer;
     }
 
     static CurrencyBucket get(int index) {

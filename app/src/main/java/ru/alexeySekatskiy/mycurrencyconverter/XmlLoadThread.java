@@ -30,7 +30,7 @@ public class XmlLoadThread implements Runnable {
             String input;
             while ((input = reader.readLine()) != null) {
                 stringB.append(input);
-                Log.d(TAG, input);
+                Log.i(TAG, input);
             }
 
             reader.close();
