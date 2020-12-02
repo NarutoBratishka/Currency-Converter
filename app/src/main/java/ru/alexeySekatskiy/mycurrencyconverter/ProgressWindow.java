@@ -22,13 +22,22 @@ public class ProgressWindow extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_window);
-        new XmlCurrencyParser().parseText();
+
+//        if (CurrencyList.size == 0) { ////
+            new XmlCurrencyParser().parseText();
+//        }
 
         Intent intent = new Intent(ProgressWindow.this, CurrencySelectionDialog.class);
         startActivity(intent);
 
         //TODO:
 //        onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 
     public void tempShowHere(View view) {

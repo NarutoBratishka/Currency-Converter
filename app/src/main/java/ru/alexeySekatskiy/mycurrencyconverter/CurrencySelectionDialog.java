@@ -8,7 +8,7 @@ import android.view.View;
 
 public class CurrencySelectionDialog extends AppCompatActivity {
 
-    private RecyclerView currencyList;
+    private RecyclerView currencyListView;
     private CurrencyAdapter adapter;
 
     @Override
@@ -16,15 +16,15 @@ public class CurrencySelectionDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency_selection_dialog);
 
-        currencyList = findViewById(R.id.currency_list);
+        currencyListView = findViewById(R.id.currency_list_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        currencyList.setLayoutManager(layoutManager);
+        currencyListView.setLayoutManager(layoutManager);
 
-        currencyList.setHasFixedSize(true);
+        currencyListView.setHasFixedSize(true);
 
-        adapter = new CurrencyAdapter();
-        currencyList.setAdapter(adapter);
+        adapter = new CurrencyAdapter(this);
+        currencyListView.setAdapter(adapter);
     }
 
     public void rubActivity(View view) {

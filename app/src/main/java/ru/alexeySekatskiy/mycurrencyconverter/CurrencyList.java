@@ -32,8 +32,19 @@ public class CurrencyList implements Iterable<CurrencyBucket> {
         return newContainer;
     }
 
+
     static CurrencyBucket get(int index) {
         return valute[index];
+    }
+
+
+    static CurrencyBucket get(String charCode) {
+
+        for (CurrencyBucket bucket : valute) {
+            if (bucket.getCharCode().equals(charCode))
+                return bucket;
+        }
+        return null;
     }
 
     @NonNull

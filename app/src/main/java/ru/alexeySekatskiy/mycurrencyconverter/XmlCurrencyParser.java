@@ -44,6 +44,8 @@ public class XmlCurrencyParser {
 
             CurrencyList.add(new CurrencyBucket(charCode(param), value(param), name(param)));
         }
+
+        CurrencyList.add(new CurrencyBucket("||||||||", 1, "    |||||||||||"));   ///////
     }
 
 

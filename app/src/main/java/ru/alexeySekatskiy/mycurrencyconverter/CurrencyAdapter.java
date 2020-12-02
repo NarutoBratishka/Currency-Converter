@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @author Aleksey Sekatskiy
@@ -13,11 +15,16 @@ import android.widget.TextView;
 public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder> {
 
     private final int itemsCount = CurrencyList.size;
+    private final Context parent;
+
+    public CurrencyAdapter(Context parent) {
+        this.parent = parent;
+    }
 
     @Override
     public CurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.currency_list_item;
+        int layoutIdForListItem = R.layout.currency_list_item_view;
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -44,17 +51,47 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
 
         TextView listItemNameView;
         TextView listItemCharCodeView;
+        ImageView checkSym;
+        ImageView lastCheckSym;             /////
 
         public CurrencyViewHolder(View itemView) {
             super(itemView);
 
             listItemNameView = itemView.findViewById(R.id.tv_item_currency_name);
             listItemCharCodeView = itemView.findViewById(R.id.tv_item_currency_charcode);
+
+            checkSym = itemView.findViewById(R.id.check_sym);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    String message = String.format("%.2f руб.", CurrencyList.get(position).getValue());
+
+                    Toast toast =  Toast.makeText(parent,
+                            message, Toast.LENGTH_SHORT);
+                    toast.show();
+
+                    if (MainActivity.isRightActivity()) {
+                        MainActivity.secondValute = CurrencyList.get(position);
+                    } else {
+                        MainActivity.firstValute = CurrencyList.get(position);
+                    }
+
+//                    changeCheckSym();
+                }
+            });
         }
 
         void bind(CurrencyBucket bucket) {
             listItemNameView.setText(bucket.getName());
             listItemCharCodeView.setText(bucket.getCharCode());
+        }
+
+        void changeCheckSym() {             /////
+            lastCheckSym.setVisibility(View.INVISIBLE);
+            lastCheckSym = checkSym;
+            checkSym.setVisibility(View.VISIBLE);
         }
     }
 }
