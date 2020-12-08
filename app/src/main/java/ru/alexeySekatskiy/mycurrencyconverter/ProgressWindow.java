@@ -17,12 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ProgressWindow extends AppCompatActivity {
+    static ProgressWindow contex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_window);
 
+        contex = this;
 //        if (CurrencyList.size == 0) { ////
             new XmlCurrencyParser().parseText();
 //        }

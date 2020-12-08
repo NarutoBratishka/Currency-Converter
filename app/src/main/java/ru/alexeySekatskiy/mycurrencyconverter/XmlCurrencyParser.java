@@ -21,31 +21,39 @@ public class XmlCurrencyParser {
 
 
 
-    public XmlCurrencyParser() {
+    public XmlCurrencyParser() { /////конструтор в роли метода - исправить!
         this.textXml = XmlLoadThread.getData()
                 .replaceFirst("<[\\.[^>]]*>(<[\\.[^>]]*>){3}\\d+<[\\.[^>]]*>", "")
                 .replace("</Valute></ValCurs>", "");
+        if (!XmlLoadThread.haveInetEx) {
+            ///// add exception handler
 
-        System.err.println(textXml);
+
+            System.err.println(textXml);
 //        Log.i(TAG, textXml);
-        valutes = Arrays.asList(textXml.split("</Valute>" +
-                "<Valute ID=\"\\w*\">" +
-                "<NumCode>\\d{3}</NumCode>"));
+            valutes = Arrays.asList(textXml.split("</Valute>" +
+                    "<Valute ID=\"\\w*\">" +
+                    "<NumCode>\\d{3}</NumCode>"));
 
-        CurrencyList.add(new CurrencyBucket("RUB", 1, "Рубль"));
+            Log.e(this.getClass().getSimpleName(), "CurrencyList.clear();"); /////
+            if (CurrencyList.valute[0] != null) CurrencyList.clear();
+            CurrencyList.add(new CurrencyBucket("RUB", 1, "Рубль"));
+        }
     }
 
     public void parseText() {
-        for (String lines: valutes) {
+        if (!XmlLoadThread.haveInetEx) {
+            for (String lines : valutes) {
 //            TODO:
-            Log.i(PARSER_TAG, lines);
-            Log.e(PARSER_TAG, "???");
-            String[] param = lines.split("</\\w+><\\w+>");
+                Log.i(PARSER_TAG, lines);
+                Log.e(PARSER_TAG, "???");
+                String[] param = lines.split("</\\w+><\\w+>");
 
-            CurrencyList.add(new CurrencyBucket(charCode(param), value(param), name(param)));
+                CurrencyList.add(new CurrencyBucket(charCode(param), value(param), name(param)));
+            }
+
+//            CurrencyList.add(new CurrencyBucket("||||||||", 0, "    |||||||||||"));   ///////
         }
-
-        CurrencyList.add(new CurrencyBucket("||||||||", 1, "    |||||||||||"));   ///////
     }
 
 

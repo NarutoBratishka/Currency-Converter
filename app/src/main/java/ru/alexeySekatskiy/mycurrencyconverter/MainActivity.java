@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         firstEdit = (EditText) findViewById(R.id.first_money_text);
         firstEdit.setOnEditorActionListener(this); /////
         secondEdit = (EditText) findViewById(R.id.second_money_text);
+        secondEdit.setOnEditorActionListener(this); /////
 
         firstEdit.setText("120.5");
         calculate(rightSide);
@@ -43,18 +44,37 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     }
 
     public void calculate(boolean side) {
-        double firstSum = firstValute.getValue() *
-                Double.parseDouble(String.valueOf(firstEdit.getText()));
+        if (side == false) {
+            double firstEditDigit = Double.parseDouble(String.valueOf(firstEdit.getText()));
+            double firstSum = firstValute.getValue() *
+                    firstEditDigit;
 
-        double result = 0d;
+            double result = 0d;
 
-        try {
-            result = firstSum / secondValute.getValue();
-        } catch (ArithmeticException e) {
-            result = 0.0;
+            try {
+                result = firstSum / secondValute.getValue();
+            } catch (ArithmeticException e) {
+                result = 0.0;
+            }
+
+            secondEdit.setText(String.format("%.2f", result).replace(',', '.'));
+            firstEdit.setText(String.format("%.2f", firstEditDigit).replace(',', '.'));
+        } else {
+            double secondEditDigit = Double.parseDouble(String.valueOf(secondEdit.getText()));
+            double secondSum = secondValute.getValue() *
+                    secondEditDigit;
+
+            double result = 0d;
+
+            try {
+                result = secondSum / firstValute.getValue();
+            } catch (ArithmeticException e) {
+                result = 0.0;
+            }
+
+            firstEdit.setText(String.format("%.2f", result).replace(',', '.'));
+            secondEdit.setText(String.format("%.2f", secondEditDigit).replace(',', '.'));
         }
-
-        secondEdit.setText(String.format("%.2f", result).replace(',', '.'));
     }
 
     /*public void startEditPreferences() {
@@ -108,6 +128,13 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (v == firstEdit) {
+            rightSide = false;
+        } else if (v == secondEdit) {
+            rightSide = true;
+        }
+
+
         if (actionId == EditorInfo.IME_ACTION_DONE) {
 //            hideKeyboard(viewValForKB);
             manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

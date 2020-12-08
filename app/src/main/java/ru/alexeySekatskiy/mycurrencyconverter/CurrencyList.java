@@ -47,6 +47,16 @@ public class CurrencyList implements Iterable<CurrencyBucket> {
         return null;
     }
 
+    static void clear() {
+
+        for (CurrencyBucket bucket: valute) {
+            bucket = null;
+        }
+
+        size = 0;
+        valute = new CurrencyBucket[16];
+    }
+
     @NonNull
     @Override
     public Iterator<CurrencyBucket> iterator() {

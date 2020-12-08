@@ -1,6 +1,7 @@
 package ru.alexeySekatskiy.mycurrencyconverter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -10,12 +11,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class XmlLoadThread implements Runnable {
     private static volatile StringBuffer stringB = new StringBuffer("");
     private static final String TAG = "XmlLoadThread";
+
+    static boolean haveInetEx = false;
 
     @Override
     public void run() {
@@ -35,6 +39,11 @@ public class XmlLoadThread implements Runnable {
 
             reader.close();
             Thread.currentThread().interrupt();
+        } catch (UnknownHostException e) {
+            Toast toast = Toast.makeText(ProgressWindow.contex, "Отсутствует подключение к интернету", Toast.LENGTH_LONG);
+            toast.show();
+            haveInetEx = true;
+            ProgressWindow.contex.finish();
         } catch (IOException e) {
             e.printStackTrace();
             Thread.currentThread().interrupt();
