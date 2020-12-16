@@ -1,5 +1,6 @@
 package ru.alexeySekatskiy.mycurrencyconverter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     InputMethodManager manager/* = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)*/;
     View viewValForKB;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 //        startEditPreferences();
     }
 
+    @SuppressLint("DefaultLocale")
     public void calculate(boolean side) {
-        if (side == false) {
+        if (!side) {
             double firstEditDigit = Double.parseDouble(String.valueOf(firstEdit.getText()));
             double firstSum = firstValute.getValue() *
                     firstEditDigit;

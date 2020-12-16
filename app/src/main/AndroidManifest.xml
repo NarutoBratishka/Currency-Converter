@@ -16,8 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCurrencyConverter"
-        android:testOnly="false"
-        android:debaggable="true">
+        android:testOnly="false">
         
         <activity android:name=".MainActivity">
             <intent-filter>
